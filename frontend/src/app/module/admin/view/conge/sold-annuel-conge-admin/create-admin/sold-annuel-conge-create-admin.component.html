@@ -1,0 +1,63 @@
+        <p-dialog [(visible)]="createDialog" [style]="{width: '70vw'}" header="{{'soldAnnuelCongeTabPan' | translate}}" [modal]="true" styleClass="p-fluid" [maximizable]="true" [draggable]="false" [resizable]="false">
+            <ng-template pTemplate="content" >
+                        <p-tabView>
+                            <p-tabPanel header="{{'{{'soldAnnuelCongeTabPan' | translate}}' | translate}}">
+                                <div class="grid">
+
+                                            <div class="field col-11 md:col-5">
+                                                <label for="1">{{'soldAnnuelCongeEmploye' | translate}}</label>
+                                                <p-dropdown  appendTo="body"  [options]="employes" [(ngModel)]="item.employe" id="1" [filter]="true" filterMatchMode="contains"
+                                                        [showClear]="true" optionLabel="id" placeholder="{{'soldAnnuelCongeEmploye' | translate}}"  >
+                                                </p-dropdown>
+                                                
+                                            </div>
+                                                <div class="field col-12 md:col-6">
+                                                    <label for="2">{{'soldAnnuelCongeAnnee' | translate}}</label>
+                                                    <p-inputNumber class="mb-2 mr-2" id="2" placeholder="{{'soldAnnuelCongeAnnee' | translate}}" [(ngModel)]="item.annee"  >
+                                                    </p-inputNumber>
+                                                    
+                                                </div>
+
+                                                <div class="field col-12 md:col-6">
+                                                    <label for="3">{{'soldAnnuelCongeNbrJourTotale' | translate}}</label>
+                                                    <p-inputNumber class="mb-2 mr-2" id="3" placeholder="{{'soldAnnuelCongeNbrJourTotale' | translate}}" [(ngModel)]="item.nbrJourTotale"  >
+                                                    </p-inputNumber>
+                                                    
+                                                </div>
+
+                                                <div class="field col-12 md:col-6">
+                                                    <label for="4">{{'soldAnnuelCongeNbrJourConsome' | translate}}</label>
+                                                    <p-inputNumber class="mb-2 mr-2" id="4" placeholder="{{'soldAnnuelCongeNbrJourConsome' | translate}}" [(ngModel)]="item.nbrJourConsome"  >
+                                                    </p-inputNumber>
+                                                    
+                                                </div>
+
+                                                <div class="field col-12 md:col-6">
+                                                    <label for="5">{{'soldAnnuelCongeNbrJourRestant' | translate}}</label>
+                                                    <p-inputNumber class="mb-2 mr-2" id="5" placeholder="{{'soldAnnuelCongeNbrJourRestant' | translate}}" [(ngModel)]="item.nbrJourRestant"  >
+                                                    </p-inputNumber>
+                                                    
+                                                </div>
+
+                                </div>
+                            </p-tabPanel>
+
+                        </p-tabView>
+
+            </ng-template>
+
+            <ng-template pTemplate="footer" >
+                <div class="grid-step">
+                        <div style="margin-left: auto;">
+                            <button pButton pRipple  label="{{'validate' | translate}}"  icon="pi pi-check" style="margin:10px" (click)="save()"></button>
+                        </div>
+                        <div>
+                            <button pButton pRipple  label="{{'cancel' | translate}}" icon="pi pi-times" class="p-button-outlined" (click)="hideCreateDialog()"></button>
+                        </div>
+
+                </div>
+            </ng-template>
+
+
+
+    </p-dialog>

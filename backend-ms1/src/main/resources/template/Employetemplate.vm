@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <title>Invoice</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 18px;
+            line-height: 1.5;
+            margin: 0;
+            padding: 0;
+
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            border: 1px solid #ccc;
+            background-color: #fff;
+            box-shadow: 0 0 10px #ddd;
+        }
+
+        .header {
+            text-align: left;
+            margin-bottom: 20px;
+        }
+
+        .header h1 {
+            font-size: 35px;
+            font-weight: bold;
+            margin: 0;
+            color: #c9302c;
+        }
+
+        .company-info {
+            margin-bottom: 20px;
+        }
+
+        .company-info p {
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        .invoice-details {
+            margin-bottom: 20px;
+        }
+
+        .invoice-details p {
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            height: 40px;
+            text-align: left;
+            font-size: 17px;
+            padding: 8px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            font-weight: bold;
+        }
+
+        .totals {
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        .totals p {
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        .footer {
+            text-align: center;
+        }
+
+        .footer p {
+            margin: 0;
+            line-height: 1.5;
+        }
+
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header" style="font-family: Noto Sans JP, sans-serif;">
+        <h1>REÇU</h1>
+    </div><br/>
+    <hr style="color:#c9302c ;height: 3px"></hr><br/>
+    <div style="display: inline-block;">
+
+        <table style="width: 100%">
+
+                    <tr>
+                <td style="text-align: left;border-bottom: 0"> <span style="font-weight: bold;">IdentifiantJlinx:</span> $identifiantJlinx</td>
+            </tr>
+            <tr>
+                <td style="text-align: left;border-bottom: 0"> <span style="font-weight: bold;">Matricule:</span> $matricule</td>
+            </tr>
+            <tr>
+                <td style="text-align: left;border-bottom: 0"> <span style="font-weight: bold;">Prenom:</span> $prenom</td>
+            </tr>
+            <tr>
+                <td style="text-align: left;border-bottom: 0"> <span style="font-weight: bold;">Nom:</span> $nom</td>
+            </tr>
+            <tr>
+                <td style="text-align: left;border-bottom: 0"> <span style="font-weight: bold;">Situation:</span> $situation</td>
+            </tr>
+            <tr>
+                <td style="text-align: left;border-bottom: 0"> <span style="font-weight: bold;">DateNaissance:</span> $dateNaissance</td>
+            </tr>
+            <tr>
+                <td style="text-align: left;border-bottom: 0"> <span style="font-weight: bold;">Sexe::</span> $sexe.libelle</td>
+            </tr>
+            <tr>
+                <td style="text-align: left;border-bottom: 0"> <span style="font-weight: bold;">Adresse:</span> $adresse</td>
+            </tr>
+            <tr>
+                <td style="text-align: left;border-bottom: 0"> <span style="font-weight: bold;">Ville:</span> $ville</td>
+            </tr>
+            <tr>
+                <td style="text-align: left;border-bottom: 0"> <span style="font-weight: bold;">Cin:</span> $cin</td>
+            </tr>
+            <tr>
+                <td style="text-align: left;border-bottom: 0"> <span style="font-weight: bold;">NumeroAdhesion:</span> $numeroAdhesion</td>
+            </tr>
+            <tr>
+                <td style="text-align: left;border-bottom: 0"> <span style="font-weight: bold;">Email:</span> $email</td>
+            </tr>
+            <tr>
+                <td style="text-align: left;border-bottom: 0"> <span style="font-weight: bold;">Rib:</span> $rib</td>
+            </tr>
+            <tr>
+                <td style="text-align: left;border-bottom: 0"> <span style="font-weight: bold;">Age:</span> $age</td>
+            </tr>
+            <tr>
+                <td style="text-align: left;border-bottom: 0"> <span style="font-weight: bold;">NumeroTelephone:</span> $numeroTelephone</td>
+            </tr>
+            <tr>
+                <td style="text-align: left;border-bottom: 0"> <span style="font-weight: bold;">EmergencyContact:</span> $emergencyContact</td>
+            </tr>
+            <tr>
+                <td style="text-align: left;border-bottom: 0"> <span style="font-weight: bold;">NumeroSecuriteSociale:</span> $numeroSecuriteSociale</td>
+            </tr>
+            <tr>
+                <td style="text-align: left;border-bottom: 0"> <span style="font-weight: bold;">Departement::</span> $departement.id</td>
+            </tr>
+            <tr>
+                <td style="text-align: left;border-bottom: 0"> <span style="font-weight: bold;">CategorieEmploye::</span> $categorieEmploye.libelle</td>
+            </tr>
+            <tr>
+                <td style="text-align: left;border-bottom: 0"> <span style="font-weight: bold;">Promotion::</span> $promotion.libelle</td>
+            </tr>
+            <tr>
+                <td style="text-align: left;border-bottom: 0"> <span style="font-weight: bold;">WarnningNotice:</span> $warnningNotice</td>
+            </tr>
+            <tr>
+                <td style="text-align: left;border-bottom: 0"> <span style="font-weight: bold;">Cost:</span> $cost</td>
+            </tr>
+            <tr>
+                <td style="text-align: left;border-bottom: 0"> <span style="font-weight: bold;">AssuranceCost:</span> $assuranceCost</td>
+            </tr>
+            <tr>
+                <td style="text-align: left;border-bottom: 0"> <span style="font-weight: bold;">Education::</span> $education.libelle</td>
+            </tr>
+            <tr>
+                <td style="text-align: left;border-bottom: 0"> <span style="font-weight: bold;">Etude:</span> $etude</td>
+            </tr>
+            <tr>
+                <td style="text-align: left;border-bottom: 0"> <span style="font-weight: bold;">Experience:</span> $experience</td>
+            </tr>
+            <tr>
+                <td style="text-align: left;border-bottom: 0"> <span style="font-weight: bold;">Salaire:</span> $salaire</td>
+            </tr>
+
+    </table><br/><br/><br/><br/><br/>
+    <table>
+        <thead>
+        <tr style="background-color: #e9ebec">
+        </tr>
+        </thead>
+
+        <tbody>
+
+
+        </tbody>
+    </table>
+    <br/><br/><br/><br/><br/><br/>
+
+    <div class="footer">
+        <p style="font-size: 25px">MERCI POUR VOTRE SERVICE!</p>
+        <p style="font-size: 18px">Si vous avez des questions, veillez contacter nous.</p>
+    </div><br/><br/>
+    <hr style="color:#c9302c ;height: 3px"></hr>
+</div>
+</body>
+</html>
+

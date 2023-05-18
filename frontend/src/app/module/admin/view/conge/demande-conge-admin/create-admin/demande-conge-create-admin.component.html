@@ -1,0 +1,98 @@
+        <p-dialog [(visible)]="createDialog" [style]="{width: '70vw'}" header="{{'demandeCongeTabPan' | translate}}" [modal]="true" styleClass="p-fluid" [maximizable]="true" [draggable]="false" [resizable]="false">
+            <ng-template pTemplate="content" >
+                        <p-tabView>
+                            <p-tabPanel header="{{'{{'demandeCongeTabPan' | translate}}' | translate}}">
+                                <div class="grid">
+
+                                                <div class="field col-12 md:col-4">
+                                                    <label for="1">{{'demandeCongeRef' | translate}}</label>
+                                                    <input class="mb-2 mr-2" type="text" pInputText  placeholder="{{'demandeCongeRef' | translate}}" id="1" [(ngModel)]="item.ref"
+                                                             />
+                                                    
+                                                </div>
+
+
+
+                                                <div class="field col-12 md:col-4">
+                                                    <label for="2">{{'demandeCongeStartTime' | translate}}</label>
+                                                    <p-calendar appendTo="body" id="2"  [showTime]="true" [showSeconds]="false" placeholder="{{'demandeCongeStartTime' | translate}}"  [(ngModel)]="item.startTime"
+                                                            dateFormat="{{dateFormat}}"  >
+                                                    </p-calendar>
+                                                    
+                                                </div>
+
+                                                <div class="field col-12 md:col-4">
+                                                    <label for="3">{{'demandeCongeEndTime' | translate}}</label>
+                                                    <p-calendar appendTo="body" id="3"  [showTime]="true" [showSeconds]="false" placeholder="{{'demandeCongeEndTime' | translate}}"  [(ngModel)]="item.endTime"
+                                                            dateFormat="{{dateFormat}}"  >
+                                                    </p-calendar>
+                                                    
+                                                </div>
+
+                                                <div class="field col-12 md:col-4">
+                                                    <label for="4">{{'demandeCongeNbrJourConge' | translate}}</label>
+                                                    <p-inputNumber class="mb-2 mr-2" id="4" placeholder="{{'demandeCongeNbrJourConge' | translate}}" [(ngModel)]="item.nbrJourConge"  >
+                                                    </p-inputNumber>
+                                                    
+                                                </div>
+
+                                            <div class="field col-11 md:col-3">
+                                                <label for="5">{{'demandeCongeEmploye' | translate}}</label>
+                                                <p-dropdown  appendTo="body"  [options]="employes" [(ngModel)]="item.employe" id="5" [filter]="true" filterMatchMode="contains"
+                                                        [showClear]="true" optionLabel="id" placeholder="{{'demandeCongeEmploye' | translate}}"  >
+                                                </p-dropdown>
+                                                
+                                            </div>
+                                            <div class="field col-11 md:col-3">
+                                                <label for="6">{{'demandeCongeDepartement' | translate}}</label>
+                                                <p-dropdown  appendTo="body"  [options]="departements" [(ngModel)]="item.departement" id="6" [filter]="true" filterMatchMode="contains"
+                                                        [showClear]="true" optionLabel="id" placeholder="{{'demandeCongeDepartement' | translate}}"  >
+                                                </p-dropdown>
+                                                
+                                            </div>
+                                            <div class="field col-11 md:col-3">
+                                                <label for="7">{{'demandeCongeEtatDemandeConge' | translate}}</label>
+                                                <p-dropdown  appendTo="body"  [options]="etatDemandeConges" [(ngModel)]="item.etatDemandeConge" id="7" [filter]="true" filterMatchMode="contains"
+                                                        [showClear]="true" optionLabel="libelle" placeholder="{{'demandeCongeEtatDemandeConge' | translate}}"  >
+                                                </p-dropdown>
+                                                
+                                            </div>
+                                                <div class="col-1">
+                                                    <label></label>
+                                                    <button pButton pRipple type="button" icon="pi pi-plus" (click)="openCreateEtatDemandeConge('EtatDemandeConge')" class="p-button-success one-colonne-btn-success-align"></button>
+                                                </div>
+                                            <div class="field col-11 md:col-3">
+                                                <label for="8">{{'demandeCongeTypeDemandeConge' | translate}}</label>
+                                                <p-dropdown  appendTo="body"  [options]="typeDemandeConges" [(ngModel)]="item.typeDemandeConge" id="8" [filter]="true" filterMatchMode="contains"
+                                                        [showClear]="true" optionLabel="libelle" placeholder="{{'demandeCongeTypeDemandeConge' | translate}}"  >
+                                                </p-dropdown>
+                                                
+                                            </div>
+                                                <div class="col-1">
+                                                    <label></label>
+                                                    <button pButton pRipple type="button" icon="pi pi-plus" (click)="openCreateTypeDemandeConge('TypeDemandeConge')" class="p-button-success one-colonne-btn-success-align"></button>
+                                                </div>
+                                </div>
+                            </p-tabPanel>
+
+                        </p-tabView>
+
+            </ng-template>
+
+            <ng-template pTemplate="footer" >
+                <div class="grid-step">
+                        <div style="margin-left: auto;">
+                            <button pButton pRipple  label="{{'validate' | translate}}"  icon="pi pi-check" style="margin:10px" (click)="save()"></button>
+                        </div>
+                        <div>
+                            <button pButton pRipple  label="{{'cancel' | translate}}" icon="pi pi-times" class="p-button-outlined" (click)="hideCreateDialog()"></button>
+                        </div>
+
+                </div>
+            </ng-template>
+
+            <app-etat-demande-conge-create-admin></app-etat-demande-conge-create-admin>
+            <app-type-demande-conge-create-admin></app-type-demande-conge-create-admin>
+
+
+    </p-dialog>

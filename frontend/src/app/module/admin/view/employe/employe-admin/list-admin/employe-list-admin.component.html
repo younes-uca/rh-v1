@@ -1,0 +1,537 @@
+<div class="grid">
+    <div class="col-12">
+        <p-toast></p-toast>
+        <div class="card">
+            <p-toolbar styleClass="mb-4">
+                <ng-template pTemplate="left">
+                                        <button pButton pRipple label=" {{'new' | translate}}" icon="pi pi-plus" class="p-button-success mr-2 mb-2" (click)="openCreate('Employe')"></button>
+                    <button [disabled]="isSelectionDisabled()" pButton pRipple label=" {{'delete' | translate}}" icon="pi pi-trash" class="p-button-danger mr-2 mb-2" (click)=deleteMultiple()></button>
+                    <button pButton pRipple label=" {{'search' | translate}}" icon="pi pi-{{findByCriteriaShow?'angle-down':'angle-right'}}" class="p-button-warning mr-2 mb-2" (click)="this.showSearch()"></button>
+                </ng-template>
+                <ng-template pTemplate="right">
+                    <div class="flex">
+                        <p-splitButton label=" {{'export' | translate}}" icon="pi pi-download" styleClass="p-button-help" [model]="excelPdfButons"></p-splitButton>
+                    </div>
+                </ng-template>
+
+            </p-toolbar>
+            <p-toolbar *ngIf="findByCriteriaShow">
+
+                <div class="align-form-search">
+                        <span class=" p-float-label mr-3 align-search-items mt-4">
+                            <input class="mr-2" pInputText id="1" type="text"  [(ngModel)]="criteria.identifiantJlinxLike">
+                            <label for="1">{{'Identifiant jlinx' | translate}}</label>
+                        </span>
+                        <span class=" p-float-label mr-3 align-search-items mt-4">
+                            <input class="mr-2" pInputText id="2" type="text"  [(ngModel)]="criteria.matriculeLike">
+                            <label for="2">{{'Matricule' | translate}}</label>
+                        </span>
+                        <span class=" p-float-label mr-3 align-search-items mt-4">
+                            <input class="mr-2" pInputText id="3" type="text"  [(ngModel)]="criteria.prenomLike">
+                            <label for="3">{{'Prenom' | translate}}</label>
+                        </span>
+                        <span class=" p-float-label mr-3 align-search-items mt-4">
+                            <input class="mr-2" pInputText id="4" type="text"  [(ngModel)]="criteria.nomLike">
+                            <label for="4">{{'Nom' | translate}}</label>
+                        </span>
+                        <span class=" p-float-label mr-3 align-search-items mt-4">
+                            <input class="mr-2" pInputText id="5" type="text"  [(ngModel)]="criteria.situationLike">
+                            <label for="5">{{'Situation' | translate}}</label>
+                        </span>
+
+                        <span class=" p-float-label mr-3 align-search-items mt-4">
+                            <p-calendar class="mr-2" [(ngModel)]="criteria.dateNaissanceFrom"
+                                    id="6-1"
+                                    dateFormat="dd-MM-yy"></p-calendar>
+                            <label for="6-1">{{'Date naissance' | translate}} Min</label>
+                        </span>
+
+                         <span class=" p-float-label mr-3 align-search-items mt-4">
+                            <p-calendar class="mr-2" [(ngModel)]="criteria.dateNaissanceTo"
+                                    id="6-2"
+                                    dateFormat="dd-MM-yy"></p-calendar>
+                            <label for="6-2">{{'Date naissance' | translate}} Max</label>
+                        </span>
+
+                        <span class=" p-float-label mr-3 align-search-items mt-4">
+                            <p-dropdown [options]="sexes" [(ngModel)]="criteria.sexe" id="7" [filter]="true"
+                                        [showClear]="true"  placeholder="{{'Sexe' | translate}}" optionLabel="libelle">
+                            </p-dropdown>
+                        </span>
+                        <span class=" p-float-label mr-3 align-search-items mt-4">
+                            <input class="mr-2" pInputText id="8" type="text"  [(ngModel)]="criteria.adresseLike">
+                            <label for="8">{{'Adresse' | translate}}</label>
+                        </span>
+                        <span class=" p-float-label mr-3 align-search-items mt-4">
+                            <input class="mr-2" pInputText id="9" type="text"  [(ngModel)]="criteria.villeLike">
+                            <label for="9">{{'Ville' | translate}}</label>
+                        </span>
+                        <span class=" p-float-label mr-3 align-search-items mt-4">
+                            <input class="mr-2" pInputText id="10" type="text"  [(ngModel)]="criteria.cinLike">
+                            <label for="10">{{'Cin' | translate}}</label>
+                        </span>
+                        <span class=" p-float-label mr-3 align-search-items mt-4">
+                            <input class="mr-2" pInputText id="11" type="text"  [(ngModel)]="criteria.numeroAdhesionLike">
+                            <label for="11">{{'Numero adhesion' | translate}}</label>
+                        </span>
+                        <span class=" p-float-label mr-3 align-search-items mt-4">
+                            <input class="mr-2" pInputText id="12" type="text"  [(ngModel)]="criteria.emailLike">
+                            <label for="12">{{'Email' | translate}}</label>
+                        </span>
+                        <span class=" p-float-label mr-3 align-search-items mt-4">
+                            <input class="mr-2" pInputText id="13" type="text"  [(ngModel)]="criteria.ribLike">
+                            <label for="13">{{'Rib' | translate}}</label>
+                        </span>
+                        <span class=" p-float-label mr-3 align-search-items mt-4">
+                            <p-inputNumber class="mr-2" mode="decimal" [(ngModel)]="criteria.ageMin" id="14-1"></p-inputNumber>
+                            <label for="14-1">{{'Age' | translate}} Min</label>
+                        </span>
+                       <span class=" p-float-label mr-3 align-search-items mt-4">
+                            <p-inputNumber class="mr-2" mode="decimal" [(ngModel)]="criteria.ageMax" id="14-2"></p-inputNumber>
+                            <label for="14-2">{{'Age' | translate}} Max</label>
+                       </span>
+                        <span class=" p-float-label mr-3 align-search-items mt-4">
+                            <input class="mr-2" pInputText id="15" type="text"  [(ngModel)]="criteria.numeroTelephoneLike">
+                            <label for="15">{{'Numero telephone' | translate}}</label>
+                        </span>
+                        <span class=" p-float-label mr-3 align-search-items mt-4">
+                            <input class="mr-2" pInputText id="16" type="text"  [(ngModel)]="criteria.emergencyContactLike">
+                            <label for="16">{{'Emergency contact' | translate}}</label>
+                        </span>
+                        <span class=" p-float-label mr-3 align-search-items mt-4">
+                            <input class="mr-2" pInputText id="17" type="text"  [(ngModel)]="criteria.numeroSecuriteSocialeLike">
+                            <label for="17">{{'Numero securite sociale' | translate}}</label>
+                        </span>
+                        <span class=" p-float-label mr-3 align-search-items mt-4">
+                            <p-dropdown [options]="departements" [(ngModel)]="criteria.departement" id="18" [filter]="true"
+                                        [showClear]="true"  placeholder="{{'Departement' | translate}}" optionLabel="id">
+                            </p-dropdown>
+                        </span>
+                        <span class=" p-float-label mr-3 align-search-items mt-4">
+                            <p-dropdown [options]="categorieEmployes" [(ngModel)]="criteria.categorieEmploye" id="19" [filter]="true"
+                                        [showClear]="true"  placeholder="{{'Categorie employe' | translate}}" optionLabel="libelle">
+                            </p-dropdown>
+                        </span>
+                        <span class=" p-float-label mr-3 align-search-items mt-4">
+                            <p-dropdown [options]="promotions" [(ngModel)]="criteria.promotion" id="20" [filter]="true"
+                                        [showClear]="true"  placeholder="{{'Promotion' | translate}}" optionLabel="libelle">
+                            </p-dropdown>
+                        </span>
+                        <span class=" p-float-label mr-3 align-search-items mt-4">
+                            <input class="mr-2" pInputText id="21" type="text"  [(ngModel)]="criteria.warnningNoticeLike">
+                            <label for="21">{{'Warnning notice' | translate}}</label>
+                        </span>
+                        <span class=" p-float-label mr-3 align-search-items mt-4">
+                            <p-inputNumber class="mr-2" mode="decimal" [(ngModel)]="criteria.costMin" id="22-1"></p-inputNumber>
+                            <label for="22-1">{{'Cost' | translate}} Min</label>
+                        </span>
+                       <span class=" p-float-label mr-3 align-search-items mt-4">
+                            <p-inputNumber class="mr-2" mode="decimal" [(ngModel)]="criteria.costMax" id="22-2"></p-inputNumber>
+                            <label for="22-2">{{'Cost' | translate}} Max</label>
+                       </span>
+                        <span class=" p-float-label mr-3 align-search-items mt-4">
+                            <p-inputNumber class="mr-2" mode="decimal" [(ngModel)]="criteria.assuranceCostMin" id="23-1"></p-inputNumber>
+                            <label for="23-1">{{'Assurance cost' | translate}} Min</label>
+                        </span>
+                       <span class=" p-float-label mr-3 align-search-items mt-4">
+                            <p-inputNumber class="mr-2" mode="decimal" [(ngModel)]="criteria.assuranceCostMax" id="23-2"></p-inputNumber>
+                            <label for="23-2">{{'Assurance cost' | translate}} Max</label>
+                       </span>
+                        <span class=" p-float-label mr-3 align-search-items mt-4">
+                            <p-dropdown [options]="educations" [(ngModel)]="criteria.education" id="24" [filter]="true"
+                                        [showClear]="true"  placeholder="{{'Education' | translate}}" optionLabel="libelle">
+                            </p-dropdown>
+                        </span>
+                        <span class=" p-float-label mr-3 align-search-items mt-4">
+                            <p-dropdown  id="25" [options]="yesOrNoEtude" [(ngModel)]="criteria.etude"
+                                    [filter]="false" [showClear]="true"  placeholder="{{'Etude' | translate}}" optionLabel="label" optionValue="value">
+                            </p-dropdown>
+                        </span>
+                        <span class=" p-float-label mr-3 align-search-items mt-4">
+                            <p-dropdown  id="26" [options]="yesOrNoExperience" [(ngModel)]="criteria.experience"
+                                    [filter]="false" [showClear]="true"  placeholder="{{'Experience' | translate}}" optionLabel="label" optionValue="value">
+                            </p-dropdown>
+                        </span>
+                        <span class=" p-float-label mr-3 align-search-items mt-4">
+                            <p-inputNumber class="mr-2" mode="decimal" [(ngModel)]="criteria.salaireMin" id="27-1"></p-inputNumber>
+                            <label for="27-1">{{'Salaire' | translate}} Min</label>
+                        </span>
+                       <span class=" p-float-label mr-3 align-search-items mt-4">
+                            <p-inputNumber class="mr-2" mode="decimal" [(ngModel)]="criteria.salaireMax" id="27-2"></p-inputNumber>
+                            <label for="27-2">{{'Salaire' | translate}} Max</label>
+                       </span>
+                </div>
+
+                <div class="align-search-button">
+                    <button pButton pRipple label="{{'validate' | translate}}" icon="pi pi-sort-amount-down" class="p-button-info mr-2" (click)="findPaginatedByCriteria()"></button>
+                </div>
+            </p-toolbar>
+
+
+            <p-table #dt [value]="items" [columns]="cols" [rows]="8" [paginator]="false"
+                    [globalFilterFields]="['identifiantJlinx', 'matricule', 'prenom', 'nom', 'situation', 'dateNaissance', 'sexelibelle', 'adresse', 'ville', 'cin', 'numeroAdhesion', 'email', 'rib', 'age', 'numeroTelephone', 'emergencyContact', 'numeroSecuriteSociale', 'departementid', 'categorieEmployelibelle', 'promotionlibelle', 'warnningNotice', 'cost', 'assuranceCost', 'educationlibelle', 'etude', 'experience', 'salaire']" [(selection)]="selections"
+                    [rowHover]="true" dataKey="id" styleClass="p-datatable-customers"
+                    currentPageReportTemplate="{{'Les éléments de {first} à {last} sur {totalRecords} ' | translate}}"
+                    [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,25,50]" selectionMode="multiple">
+                <ng-template pTemplate="caption">
+                    <div class="flex flex-column flex-row justify-content-between table-header">
+                        <h5 class="p-m-0">{{'employeHeader' | translate}}</h5>
+                        <span class="p-input-icon-left ml-auto">
+                            <i class="pi pi-search"></i>
+                            <input pInputText type="text" placeholder="{{'searchInput' | translate}}" (input)="dt.filterGlobal($event.target.value, 'contains')"/>
+                        </span>
+                    </div>
+                </ng-template>
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th style="width: 3rem">
+                            <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                        </th>
+                                
+                        <th pSortableColumn="identifiantJlinx">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>{{'Identifiant jlinx' | translate}}</span>
+                                <p-sortIcon field="identifiantJlinx"></p-sortIcon>
+                                <p-columnFilter type="text" field="element.identifiantJlinx" display="menu" class="ml-auto"></p-columnFilter>
+                            </div>
+                        </th>
+                                
+                                
+                        <th pSortableColumn="matricule">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>{{'Matricule' | translate}}</span>
+                                <p-sortIcon field="matricule"></p-sortIcon>
+                                <p-columnFilter type="text" field="element.matricule" display="menu" class="ml-auto"></p-columnFilter>
+                            </div>
+                        </th>
+                                
+                                
+                        <th pSortableColumn="prenom">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>{{'Prenom' | translate}}</span>
+                                <p-sortIcon field="prenom"></p-sortIcon>
+                                <p-columnFilter type="text" field="element.prenom" display="menu" class="ml-auto"></p-columnFilter>
+                            </div>
+                        </th>
+                                
+                                
+                        <th pSortableColumn="nom">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>{{'Nom' | translate}}</span>
+                                <p-sortIcon field="nom"></p-sortIcon>
+                                <p-columnFilter type="text" field="element.nom" display="menu" class="ml-auto"></p-columnFilter>
+                            </div>
+                        </th>
+                                
+                                
+                        <th pSortableColumn="situation">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>{{'Situation' | translate}}</span>
+                                <p-sortIcon field="situation"></p-sortIcon>
+                                <p-columnFilter type="text" field="element.situation" display="menu" class="ml-auto"></p-columnFilter>
+                            </div>
+                        </th>
+                                
+                                
+                        <th pSortableColumn="dateNaissance">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>{{'Date naissance' | translate}}</span>
+                                <p-sortIcon field="dateNaissance"></p-sortIcon>
+                            </div>
+                        </th>
+                                
+                                
+                        <th pSortableColumn="sexe">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>{{'Sexe' | translate}}</span>
+                                <p-sortIcon field="sexe"></p-sortIcon>
+                            </div>
+                        </th>
+                                
+                                
+                        <th pSortableColumn="adresse">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>{{'Adresse' | translate}}</span>
+                                <p-sortIcon field="adresse"></p-sortIcon>
+                                <p-columnFilter type="text" field="element.adresse" display="menu" class="ml-auto"></p-columnFilter>
+                            </div>
+                        </th>
+                                
+                                
+                        <th pSortableColumn="ville">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>{{'Ville' | translate}}</span>
+                                <p-sortIcon field="ville"></p-sortIcon>
+                                <p-columnFilter type="text" field="element.ville" display="menu" class="ml-auto"></p-columnFilter>
+                            </div>
+                        </th>
+                                
+                                <!-- 
+                        <th pSortableColumn="cin">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>{{'Cin' | translate}}</span>
+                                <p-sortIcon field="cin"></p-sortIcon>
+                                <p-columnFilter type="text" field="element.cin" display="menu" class="ml-auto"></p-columnFilter>
+                            </div>
+                        </th>
+                                --> 
+                                <!-- 
+                        <th pSortableColumn="numeroAdhesion">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>{{'Numero adhesion' | translate}}</span>
+                                <p-sortIcon field="numeroAdhesion"></p-sortIcon>
+                                <p-columnFilter type="text" field="element.numeroAdhesion" display="menu" class="ml-auto"></p-columnFilter>
+                            </div>
+                        </th>
+                                --> 
+                                <!-- 
+                        <th pSortableColumn="email">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>{{'Email' | translate}}</span>
+                                <p-sortIcon field="email"></p-sortIcon>
+                                <p-columnFilter type="text" field="element.email" display="menu" class="ml-auto"></p-columnFilter>
+                            </div>
+                        </th>
+                                --> 
+                                <!-- 
+                        <th pSortableColumn="rib">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>{{'Rib' | translate}}</span>
+                                <p-sortIcon field="rib"></p-sortIcon>
+                                <p-columnFilter type="text" field="element.rib" display="menu" class="ml-auto"></p-columnFilter>
+                            </div>
+                        </th>
+                                --> 
+                                <!-- 
+                        <th pSortableColumn="age">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>{{'Age' | translate}}</span>
+                                <p-sortIcon field="age"></p-sortIcon>
+                            </div>
+                        </th>
+                                --> 
+                                <!-- 
+                        <th pSortableColumn="numeroTelephone">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>{{'Numero telephone' | translate}}</span>
+                                <p-sortIcon field="numeroTelephone"></p-sortIcon>
+                                <p-columnFilter type="text" field="element.numeroTelephone" display="menu" class="ml-auto"></p-columnFilter>
+                            </div>
+                        </th>
+                                --> 
+                                <!-- 
+                        <th pSortableColumn="emergencyContact">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>{{'Emergency contact' | translate}}</span>
+                                <p-sortIcon field="emergencyContact"></p-sortIcon>
+                                <p-columnFilter type="text" field="element.emergencyContact" display="menu" class="ml-auto"></p-columnFilter>
+                            </div>
+                        </th>
+                                --> 
+                                <!-- 
+                        <th pSortableColumn="numeroSecuriteSociale">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>{{'Numero securite sociale' | translate}}</span>
+                                <p-sortIcon field="numeroSecuriteSociale"></p-sortIcon>
+                                <p-columnFilter type="text" field="element.numeroSecuriteSociale" display="menu" class="ml-auto"></p-columnFilter>
+                            </div>
+                        </th>
+                                --> 
+                                <!-- 
+                        <th pSortableColumn="departement">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>{{'Departement' | translate}}</span>
+                                <p-sortIcon field="departement"></p-sortIcon>
+                            </div>
+                        </th>
+                                --> 
+                                <!-- 
+                        <th pSortableColumn="categorieEmploye">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>{{'Categorie employe' | translate}}</span>
+                                <p-sortIcon field="categorieEmploye"></p-sortIcon>
+                            </div>
+                        </th>
+                                --> 
+                                <!-- 
+                        <th pSortableColumn="promotion">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>{{'Promotion' | translate}}</span>
+                                <p-sortIcon field="promotion"></p-sortIcon>
+                            </div>
+                        </th>
+                                --> 
+                                <!-- 
+                        <th pSortableColumn="warnningNotice">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>{{'Warnning notice' | translate}}</span>
+                                <p-sortIcon field="warnningNotice"></p-sortIcon>
+                                <p-columnFilter type="text" field="element.warnningNotice" display="menu" class="ml-auto"></p-columnFilter>
+                            </div>
+                        </th>
+                                --> 
+                                <!-- 
+                        <th pSortableColumn="cost">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>{{'Cost' | translate}}</span>
+                                <p-sortIcon field="cost"></p-sortIcon>
+                            </div>
+                        </th>
+                                --> 
+                                <!-- 
+                        <th pSortableColumn="assuranceCost">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>{{'Assurance cost' | translate}}</span>
+                                <p-sortIcon field="assuranceCost"></p-sortIcon>
+                            </div>
+                        </th>
+                                --> 
+                                <!-- 
+                        <th pSortableColumn="education">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>{{'Education' | translate}}</span>
+                                <p-sortIcon field="education"></p-sortIcon>
+                            </div>
+                        </th>
+                                --> 
+                                <!-- 
+                        <th pSortableColumn="etude">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>{{'Etude' | translate}}</span>
+                                <p-sortIcon field="etude"></p-sortIcon>
+                            </div>
+                        </th>
+                                --> 
+                                <!-- 
+                        <th pSortableColumn="experience">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>{{'Experience' | translate}}</span>
+                                <p-sortIcon field="experience"></p-sortIcon>
+                            </div>
+                        </th>
+                                --> 
+                                <!-- 
+                        <th pSortableColumn="salaire">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                <span>{{'Salaire' | translate}}</span>
+                                <p-sortIcon field="salaire"></p-sortIcon>
+                            </div>
+                        </th>
+                                --> 
+                        <th>Actions</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-element>
+                    <tr>
+                        <td>
+                            <p-tableCheckbox [value]="element"></p-tableCheckbox>
+                        </td>
+                            
+                        <td>{{element.identifiantJlinx}}</td>
+                            
+                            
+                        <td>{{element.matricule}}</td>
+                            
+                            
+                        <td>{{element.prenom}}</td>
+                            
+                            
+                        <td>{{element.nom}}</td>
+                            
+                            
+                        <td>{{element.situation}}</td>
+                            
+                            
+                        <td>{{element.dateNaissance | date :'dd/MM/yyyy HH:mm' }}</td>
+                            
+                            
+                        <td>{{element.sexe?.libelle}}</td>
+                            
+                            
+                        <td>{{element.adresse}}</td>
+                            
+                            
+                        <td>{{element.ville}}</td>
+                            
+                             <!-- 
+                        <td>{{element.cin}}</td>
+                             --> 
+                             <!-- 
+                        <td>{{element.numeroAdhesion}}</td>
+                             --> 
+                             <!-- 
+                        <td>{{element.email}}</td>
+                             --> 
+                             <!-- 
+                        <td>{{element.rib}}</td>
+                             --> 
+                             <!-- 
+                        <td>{{element.age}}</td>
+                             --> 
+                             <!-- 
+                        <td>{{element.numeroTelephone}}</td>
+                             --> 
+                             <!-- 
+                        <td>{{element.emergencyContact}}</td>
+                             --> 
+                             <!-- 
+                        <td>{{element.numeroSecuriteSociale}}</td>
+                             --> 
+                             <!-- 
+                        <td>{{element.departement?.id}}</td>
+                             --> 
+                             <!-- 
+                        <td>{{element.categorieEmploye?.libelle}}</td>
+                             --> 
+                             <!-- 
+                        <td>{{element.promotion?.libelle}}</td>
+                             --> 
+                             <!-- 
+                        <td>{{element.warnningNotice}}</td>
+                             --> 
+                             <!-- 
+                        <td>{{element.cost}}</td>
+                             --> 
+                             <!-- 
+                        <td>{{element.assuranceCost}}</td>
+                             --> 
+                             <!-- 
+                        <td>{{element.education?.libelle}}</td>
+                             --> 
+                             <!-- 
+                        <td><i *ngIf="element.etude" class="pi pi-check checked-toogle"></i>
+                            <i *ngIf="!element.etude" class="pi pi-times unchecked-toogle"></i>
+                        </td>
+                             --> 
+                             <!-- 
+                        <td><i *ngIf="element.experience" class="pi pi-check checked-toogle"></i>
+                            <i *ngIf="!element.experience" class="pi pi-times unchecked-toogle"></i>
+                        </td>
+                             --> 
+                             <!-- 
+                        <td>{{element.salaire}}</td>
+                             --> 
+                        <td>
+                            <button pButton pRipple icon="pi pi-pencil"  class="p-button-rounded p-button-success mr-2" (click)="edit(element)"></button>
+                            <button pButton pRipple icon="pi pi-list" class="p-button-rounded p-button-info mr-2" (click)="view(element)"></button>
+                            <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-danger mr-2" (click)="delete(element)"></button>
+                            <button pButton pRipple icon="pi pi-copy" class="p-button-rounded p-button-raised p-button-warning" (click)="duplicate(element)"></button>
+                        </td>
+                    </tr>
+                </ng-template>
+
+                <ng-template pTemplate="summary">
+                    <p-paginator  [rows]="10" [totalRecords]="totalRecords" (onPageChange)="onPage($event)"></p-paginator>
+                    <div class="p-d-flex p-ai-center p-jc-between">
+                        En totale il {{items ? totalRecords == 1 ? 'y a' : 'y a' : 'y a' }} {{items ? totalRecords : 0 }} {{items ? totalRecords == 1 ? 'employe' : 'employes' : 0 }}.
+                    </div>
+                </ng-template>
+            </p-table>
+        </div>
+
+        <app-employe-create-admin></app-employe-create-admin>
+        <app-employe-edit-admin></app-employe-edit-admin>
+        <app-employe-view-admin></app-employe-view-admin>
+        <p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>
+    </div>
+</div>

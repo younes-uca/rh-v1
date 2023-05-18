@@ -1,0 +1,145 @@
+        <p-dialog [(visible)]="createDialog" [style]="{width: '70vw'}" header="{{'assuranceTabPan' | translate}}" [modal]="true" styleClass="p-fluid" [maximizable]="true" [draggable]="false" [resizable]="false">
+            <ng-template pTemplate="content" >
+                        <p-tabView>
+                            <p-tabPanel header="{{'{{'assuranceTabPan' | translate}}' | translate}}">
+                                <div class="grid">
+
+                                            <div class="field col-11 md:col-2">
+                                                <label for="1">{{'assuranceSociete' | translate}}</label>
+                                                <p-dropdown  appendTo="body"  [options]="societes" [(ngModel)]="item.societe" id="1" [filter]="true" filterMatchMode="contains"
+                                                        [showClear]="true" optionLabel="libelle" placeholder="{{'assuranceSociete' | translate}}"  >
+                                                </p-dropdown>
+                                                
+                                            </div>
+                                                <div class="col-1">
+                                                    <label></label>
+                                                    <button pButton pRipple type="button" icon="pi pi-plus" (click)="openCreateSociete('Societe')" class="p-button-success one-colonne-btn-success-align"></button>
+                                                </div>
+                                            <div class="field col-11 md:col-2">
+                                                <label for="2">{{'assuranceCompagnieAssurance' | translate}}</label>
+                                                <p-dropdown  appendTo="body"  [options]="compagnieAssurances" [(ngModel)]="item.compagnieAssurance" id="2" [filter]="true" filterMatchMode="contains"
+                                                        [showClear]="true" optionLabel="libelle" placeholder="{{'assuranceCompagnieAssurance' | translate}}"  >
+                                                </p-dropdown>
+                                                
+                                            </div>
+                                                <div class="col-1">
+                                                    <label></label>
+                                                    <button pButton pRipple type="button" icon="pi pi-plus" (click)="openCreateCompagnieAssurance('CompagnieAssurance')" class="p-button-success one-colonne-btn-success-align"></button>
+                                                </div>
+                                                <div class="field col-12 md:col-3">
+                                                    <label for="3">{{'assuranceNumeroPolice' | translate}}</label>
+                                                    <input class="mb-2 mr-2" type="text" pInputText  placeholder="{{'assuranceNumeroPolice' | translate}}" id="3" [(ngModel)]="item.numeroPolice"
+                                                             />
+                                                    
+                                                </div>
+
+
+
+                                                <div class="field col-12 md:col-3">
+                                                    <label for="4">{{'assuranceCourtier' | translate}}</label>
+                                                    <input class="mb-2 mr-2" type="text" pInputText  placeholder="{{'assuranceCourtier' | translate}}" id="4" [(ngModel)]="item.courtier"
+                                                             />
+                                                    
+                                                </div>
+
+
+
+                                            <div class="field col-11 md:col-2">
+                                                <label for="5">{{'assuranceEmploye' | translate}}</label>
+                                                <p-dropdown  appendTo="body"  [options]="employes" [(ngModel)]="item.employe" id="5" [filter]="true" filterMatchMode="contains"
+                                                        [showClear]="true" optionLabel="id" placeholder="{{'assuranceEmploye' | translate}}"  >
+                                                </p-dropdown>
+                                                
+                                            </div>
+                                                <div class="field col-12 md:col-3">
+                                                    <label for="6">{{'assuranceMalade' | translate}}</label>
+                                                    <input class="mb-2 mr-2" type="text" pInputText  placeholder="{{'assuranceMalade' | translate}}" id="6" [(ngModel)]="item.malade"
+                                                             />
+                                                    
+                                                </div>
+
+
+
+                                            <div class="field col-11 md:col-2">
+                                                <label for="7">{{'assuranceLienParente' | translate}}</label>
+                                                <p-dropdown  appendTo="body"  [options]="lienParentes" [(ngModel)]="item.lienParente" id="7" [filter]="true" filterMatchMode="contains"
+                                                        [showClear]="true" optionLabel="libelle" placeholder="{{'assuranceLienParente' | translate}}"  >
+                                                </p-dropdown>
+                                                
+                                            </div>
+                                                <div class="col-1">
+                                                    <label></label>
+                                                    <button pButton pRipple type="button" icon="pi pi-plus" (click)="openCreateLienParente('LienParente')" class="p-button-success one-colonne-btn-success-align"></button>
+                                                </div>
+                                                <div class="field col-12 md:col-3">
+                                                    <label for="8">{{'assuranceDateConsultation' | translate}}</label>
+                                                    <p-calendar appendTo="body" id="8"  [showTime]="true" [showSeconds]="false" placeholder="{{'assuranceDateConsultation' | translate}}"  [(ngModel)]="item.dateConsultation"
+                                                            dateFormat="{{dateFormat}}"  >
+                                                    </p-calendar>
+                                                    
+                                                </div>
+
+                                                <div class="field col-12 md:col-3">
+                                                    <label for="9">{{'assuranceDateTransmission' | translate}}</label>
+                                                    <p-calendar appendTo="body" id="9"  [showTime]="true" [showSeconds]="false" placeholder="{{'assuranceDateTransmission' | translate}}"  [(ngModel)]="item.dateTransmission"
+                                                            dateFormat="{{dateFormat}}"  >
+                                                    </p-calendar>
+                                                    
+                                                </div>
+
+                                                <div class="field col-12 md:col-3">
+                                                    <label for="10">{{'assuranceNatureBesoin' | translate}}</label>
+                                                    <input class="mb-2 mr-2" type="text" pInputText  placeholder="{{'assuranceNatureBesoin' | translate}}" id="10" [(ngModel)]="item.natureBesoin"
+                                                             />
+                                                    
+                                                </div>
+
+
+
+                                                <div class="field col-12 md:col-3">
+                                                    <label for="11">{{'assuranceFraisEnagage' | translate}}</label>
+                                                    <p-inputNumber class="mb-2 mr-2" id="11" placeholder="{{'assuranceFraisEnagage' | translate}}" [(ngModel)]="item.fraisEnagage"  >
+                                                    </p-inputNumber>
+                                                    
+                                                </div>
+
+                                                <div class="field col-12 md:col-3">
+                                                    <label for="12">{{'assuranceDateEnvoi' | translate}}</label>
+                                                    <p-calendar appendTo="body" id="12"  [showTime]="true" [showSeconds]="false" placeholder="{{'assuranceDateEnvoi' | translate}}"  [(ngModel)]="item.dateEnvoi"
+                                                            dateFormat="{{dateFormat}}"  >
+                                                    </p-calendar>
+                                                    
+                                                </div>
+
+                                                <div class="field col-12 md:col-3">
+                                                    <label for="13">{{'assuranceObservation' | translate}}</label>
+                                                    <textarea id="13" pInputTextarea rows="5" cols="30" placeholder="{{'assuranceObservation' | translate}}"  [(ngModel)]="item.observation"
+                                                             ></textarea>
+                                                    
+                                                </div>
+
+                                </div>
+                            </p-tabPanel>
+
+                        </p-tabView>
+
+            </ng-template>
+
+            <ng-template pTemplate="footer" >
+                <div class="grid-step">
+                        <div style="margin-left: auto;">
+                            <button pButton pRipple  label="{{'validate' | translate}}"  icon="pi pi-check" style="margin:10px" (click)="save()"></button>
+                        </div>
+                        <div>
+                            <button pButton pRipple  label="{{'cancel' | translate}}" icon="pi pi-times" class="p-button-outlined" (click)="hideCreateDialog()"></button>
+                        </div>
+
+                </div>
+            </ng-template>
+
+            <app-societe-create-admin></app-societe-create-admin>
+            <app-compagnie-assurance-create-admin></app-compagnie-assurance-create-admin>
+            <app-lien-parente-create-admin></app-lien-parente-create-admin>
+
+
+    </p-dialog>

@@ -1,0 +1,125 @@
+        <p-dialog [(visible)]="createDialog" [style]="{width: '70vw'}" header="{{'stationTabPan' | translate}}" [modal]="true" styleClass="p-fluid" [maximizable]="true" [draggable]="false" [resizable]="false">
+            <ng-template pTemplate="content" >
+                        <p-tabView>
+                            <p-tabPanel header="{{'{{'stationTabPan' | translate}}' | translate}}">
+                                <div class="grid">
+
+                                                <div class="field col-12 md:col-6">
+                                                    <label for="1">{{'stationCode' | translate}}</label>
+                                                    <input class="mb-2 mr-2" type="text" pInputText  placeholder="{{'stationCode' | translate}}" id="1" [(ngModel)]="item.code"
+                                                             />
+                                                    
+                                                </div>
+
+
+
+                                            <div class="field col-11 md:col-5">
+                                                <label for="2">{{'stationEmploye' | translate}}</label>
+                                                <p-dropdown  appendTo="body"  [options]="employes" [(ngModel)]="item.employe" id="2" [filter]="true" filterMatchMode="contains"
+                                                        [showClear]="true" optionLabel="id" placeholder="{{'stationEmploye' | translate}}"  >
+                                                </p-dropdown>
+                                                
+                                            </div>
+                                            <div class="field col-11 md:col-5">
+                                                <label for="3">{{'stationVille' | translate}}</label>
+                                                <p-dropdown  appendTo="body"  [options]="villes" [(ngModel)]="item.ville" id="3" [filter]="true" filterMatchMode="contains"
+                                                        [showClear]="true" optionLabel="libelle" placeholder="{{'stationVille' | translate}}"  >
+                                                </p-dropdown>
+                                                
+                                            </div>
+                                                <div class="field col-12 md:col-6">
+                                                    <label for="4">{{'stationAdresse' | translate}}</label>
+                                                    <textarea id="4" pInputTextarea rows="5" cols="30" placeholder="{{'stationAdresse' | translate}}"  [(ngModel)]="item.adresse"
+                                                             ></textarea>
+                                                    
+                                                </div>
+
+                                </div>
+                            </p-tabPanel>
+                                    <p-tabPanel header="stationDepartements">
+                                        <p-tabView [(activeIndex)]="activeTab">
+                                            <p-tabPanel header="Création">
+                                                    <div class="grid">
+                                                                    <div class="field col-11 md:col-3">
+                                                                        <label>Siege</label>
+                                                                        <p-dropdown  appendTo="body"  [options]="sieges" [(ngModel)]="departementsElement.siege"
+                                                                                     id="1"  [filter]="true" filterMatchMode="contains" [showClear]="true" optionLabel="libelle"
+                                                                                     placeholder="Siege"  >
+                                                                        </p-dropdown>
+                                                                        
+                                                                    </div>
+                                                                    <div class="field col-12 md:col-4">
+                                                                        <label for="2">Nbr employe</label>
+                                                                        <p-inputNumber class="mb-2 mr-2" id="nbrEmploye" placeholder="Nbr employe"  [(ngModel)]="departementsElement.nbrEmploye"></p-inputNumber>
+                                                                        
+                                                                    </div>
+                                                                    <div class="field col-12 md:col-4">
+                                                                        <label for="3">Moyenne age</label>
+                                                                        <p-inputNumber class="mb-2 mr-2" id="moyenneAge" placeholder="Moyenne age"  [(ngModel)]="departementsElement.moyenneAge"></p-inputNumber>
+                                                                        
+                                                                    </div>
+                                                                    <div class="field col-11 md:col-3">
+                                                                        <label>Employe</label>
+                                                                        <p-dropdown  appendTo="body"  [options]="employes" [(ngModel)]="departementsElement.employe"
+                                                                                     id="4"  [filter]="true" filterMatchMode="contains" [showClear]="true" optionLabel="id"
+                                                                                     placeholder="Employe"  >
+                                                                        </p-dropdown>
+                                                                        
+                                                                    </div>
+                                                        <div class="field col-12 md:col-1">
+                                                            <button pButton pRipple type="button" icon="pi pi-plus" class="mt-4" label="OK" (click)="addDepartements()"></button>
+                                                        </div>
+
+                                                    </div>
+                                            </p-tabPanel>
+                                            <p-tabPanel header="Liste {{item.departements?.length > 0 ? '(' + item.departements?.length + ')' : ''}}">
+                                                    <div class="card">
+                                                        <p-table [value]="item.departements" [scrollable]="true" scrollHeight="200px">
+                                                            <ng-template pTemplate="header">
+                                                                <tr>
+                                                                                <th>Siege</th>
+                                                                                <th>Nbr employe</th>
+                                                                                <th>Moyenne age</th>
+                                                                                <th>Employe</th>
+                                                                    <th>Actions</th>
+                                                                </tr>
+                                                            </ng-template>
+                                                            <ng-template pTemplate="body" let-p>
+                                                                <tr>
+                                                                            <td>{{p.siege?.libelle}}</td>
+                                                                                <td>{{p.nbrEmploye}}</td>
+                                                                                <td>{{p.moyenneAge}}</td>
+                                                                            <td>{{p.employe?.id}}</td>
+                                                                    <td>
+                                                                        <button (click)="deleteDepartement(p)" pButton type="button" icon="pi pi-times"  class="p-button-rounded p-button-danger"></button>
+                                                                        <button (click)="editDepartement(p)" pButton type="button" icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2"></button>
+                                                                    </td>
+                                                                </tr>
+                                                            </ng-template>
+                                                        </p-table>
+                                                    </div>
+
+                                            </p-tabPanel>
+                                        </p-tabView>
+                                    </p-tabPanel>
+
+
+                        </p-tabView>
+
+            </ng-template>
+
+            <ng-template pTemplate="footer" >
+                <div class="grid-step">
+                        <div style="margin-left: auto;">
+                            <button pButton pRipple  label="{{'validate' | translate}}"  icon="pi pi-check" style="margin:10px" (click)="save()"></button>
+                        </div>
+                        <div>
+                            <button pButton pRipple  label="{{'cancel' | translate}}" icon="pi pi-times" class="p-button-outlined" (click)="hideCreateDialog()"></button>
+                        </div>
+
+                </div>
+            </ng-template>
+
+
+
+    </p-dialog>

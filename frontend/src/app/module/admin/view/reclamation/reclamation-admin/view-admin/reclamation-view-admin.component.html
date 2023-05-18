@@ -1,0 +1,64 @@
+
+<p-dialog [(visible)]="viewDialog" [style]="{width: '70vw'}" header="{{'reclamationTabPan' | translate}}" [modal]="true" styleClass="p-fluid">
+    <ng-template pTemplate="content">
+        <p-tabView>
+            <p-tabPanel header="{{'reclamationTabPan' | translate}}">
+                <div class="grid">
+                    <div class="field col-12 md:col-3">
+                        <label for="1">{{'Reference' | translate}}</label>
+                        <input class="mb-2 mr-2" type="text" pInputText [disabled]="true" placeholder="{{'Reference' | translate}}" autofocus  id="1" [(ngModel)]="item.reference">
+                    </div>
+                    <div class="field col-12 md:col-3">
+                        <label for="2">{{'Date reclamation' | translate}}</label>
+                        <p-calendar id="2" [disabled]="true"  [showTime]="true" [showSeconds]="false" placeholder="{{'Date reclamation' | translate}}"  [(ngModel)]="item.dateReclamation" dateFormat="{{dateFormat}}"></p-calendar>
+                    </div>
+                    <div class="field col-12 md:col-3">
+                        <label for="3">{{'Message' | translate}}</label>
+                        <textarea id="3" pInputTextarea rows="5" cols="30" [disabled]="true" placeholder="{{'Message' | translate}}"  [(ngModel)]="item.message"></textarea>
+                    </div>
+                    <div class="field col-12 md:col-3">
+                        <label for="4">{{'Date traitement' | translate}}</label>
+                        <p-calendar id="4" [disabled]="true"  [showTime]="true" [showSeconds]="false" placeholder="{{'Date traitement' | translate}}"  [(ngModel)]="item.dateTraitement" dateFormat="{{dateFormat}}"></p-calendar>
+                    </div>
+                    <div class="field col-12 md:col-3">
+                        <label for="5">{{'Date reponse' | translate}}</label>
+                        <p-calendar id="5" [disabled]="true"  [showTime]="true" [showSeconds]="false" placeholder="{{'Date reponse' | translate}}"  [(ngModel)]="item.dateReponse" dateFormat="{{dateFormat}}"></p-calendar>
+                    </div>
+                    <div class="field col-12 md:col-3">
+                        <label for="6">{{'Commentaire traiteur' | translate}}</label>
+                        <textarea id="6" pInputTextarea rows="5" cols="30" [disabled]="true" placeholder="{{'Commentaire traiteur' | translate}}"  [(ngModel)]="item.commentaireTraiteur"></textarea>
+                    </div>
+                    <div class="field col-12 md:col-3">
+                        <label for="7">{{'Objet reclamation' | translate}}</label>
+                        <input class="mb-2 mr-2" type="text" pInputText [disabled]="true" placeholder="{{'Objet reclamation' | translate}}" autofocus  id="7" [(ngModel)]="item.objetReclamation">
+                    </div>
+                    <div class="field col-12 md:col-3">
+                        <label for="8">{{'Type reclamation' | translate}}</label>
+                        <p-dropdown [options]="typeReclamations" [(ngModel)]="item.typeReclamation" id="8" [disabled]="true" optionLabel="libelle" placeholder="{{'Type reclamation' | translate}}"></p-dropdown>
+                    </div>
+                    <div class="field col-12 md:col-3">
+                        <label for="9">{{'Etat reclamation' | translate}}</label>
+                        <p-dropdown [options]="etatReclamations" [(ngModel)]="item.etatReclamation" id="9" [disabled]="true" optionLabel="libelle" placeholder="{{'Etat reclamation' | translate}}"></p-dropdown>
+                    </div>
+                    <div class="field col-12 md:col-3">
+                        <label for="10">{{'Employe' | translate}}</label>
+                        <p-dropdown [options]="employes" [(ngModel)]="item.employe" id="10" [disabled]="true" optionLabel="id" placeholder="{{'Employe' | translate}}"></p-dropdown>
+                    </div>
+                </div>
+            </p-tabPanel>
+
+        </p-tabView>
+
+    </ng-template>
+
+    <ng-template pTemplate="footer" >
+        <div class="grid-footer">
+            <div>
+                <button pButton pRipple label="Annuler" icon="pi pi-times" class="p-button-outlined" (click)="hideViewDialog()"></button>
+            </div>
+        </div>
+    </ng-template>
+</p-dialog>
+
+
+

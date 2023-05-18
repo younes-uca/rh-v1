@@ -1,0 +1,140 @@
+
+<p-dialog [(visible)]="viewDialog" [style]="{width: '70vw'}" header="{{'employeTabPan' | translate}}" [modal]="true" styleClass="p-fluid">
+    <ng-template pTemplate="content">
+        <p-tabView>
+            <p-tabPanel header="{{'employeTabPan' | translate}}">
+                <div class="grid">
+                    <div class="field col-12 md:col-3">
+                        <label for="1">{{'Identifiant jlinx' | translate}}</label>
+                        <input class="mb-2 mr-2" type="text" pInputText [disabled]="true" placeholder="{{'Identifiant jlinx' | translate}}" autofocus  id="1" [(ngModel)]="item.identifiantJlinx">
+                    </div>
+                    <div class="field col-12 md:col-3">
+                        <label for="2">{{'Matricule' | translate}}</label>
+                        <input class="mb-2 mr-2" type="text" pInputText [disabled]="true" placeholder="{{'Matricule' | translate}}" autofocus  id="2" [(ngModel)]="item.matricule">
+                    </div>
+                    <div class="field col-12 md:col-3">
+                        <label for="3">{{'Prenom' | translate}}</label>
+                        <input class="mb-2 mr-2" type="text" pInputText [disabled]="true" placeholder="{{'Prenom' | translate}}" autofocus  id="3" [(ngModel)]="item.prenom">
+                    </div>
+                    <div class="field col-12 md:col-3">
+                        <label for="4">{{'Nom' | translate}}</label>
+                        <input class="mb-2 mr-2" type="text" pInputText [disabled]="true" placeholder="{{'Nom' | translate}}" autofocus  id="4" [(ngModel)]="item.nom">
+                    </div>
+                    <div class="field col-12 md:col-3">
+                        <label for="5">{{'Situation' | translate}}</label>
+                        <input class="mb-2 mr-2" type="text" pInputText [disabled]="true" placeholder="{{'Situation' | translate}}" autofocus  id="5" [(ngModel)]="item.situation">
+                    </div>
+                    <div class="field col-12 md:col-3">
+                        <label for="6">{{'Date naissance' | translate}}</label>
+                        <p-calendar id="6" [disabled]="true"  [showTime]="true" [showSeconds]="false" placeholder="{{'Date naissance' | translate}}"  [(ngModel)]="item.dateNaissance" dateFormat="{{dateFormat}}"></p-calendar>
+                    </div>
+                    <div class="field col-12 md:col-3">
+                        <label for="7">{{'Sexe' | translate}}</label>
+                        <p-dropdown [options]="sexes" [(ngModel)]="item.sexe" id="7" [disabled]="true" optionLabel="libelle" placeholder="{{'Sexe' | translate}}"></p-dropdown>
+                    </div>
+                    <div class="field col-12 md:col-3">
+                        <label for="8">{{'Adresse' | translate}}</label>
+                        <input class="mb-2 mr-2" type="text" pInputText [disabled]="true" placeholder="{{'Adresse' | translate}}" autofocus  id="8" [(ngModel)]="item.adresse">
+                    </div>
+                    <div class="field col-12 md:col-3">
+                        <label for="9">{{'Ville' | translate}}</label>
+                        <input class="mb-2 mr-2" type="text" pInputText [disabled]="true" placeholder="{{'Ville' | translate}}" autofocus  id="9" [(ngModel)]="item.ville">
+                    </div>
+                    <div class="field col-12 md:col-3">
+                        <label for="10">{{'Cin' | translate}}</label>
+                        <input class="mb-2 mr-2" type="text" pInputText [disabled]="true" placeholder="{{'Cin' | translate}}" autofocus  id="10" [(ngModel)]="item.cin">
+                    </div>
+                    <div class="field col-12 md:col-3">
+                        <label for="11">{{'Numero adhesion' | translate}}</label>
+                        <input class="mb-2 mr-2" type="text" pInputText [disabled]="true" placeholder="{{'Numero adhesion' | translate}}" autofocus  id="11" [(ngModel)]="item.numeroAdhesion">
+                    </div>
+                    <div class="field col-12 md:col-3">
+                        <label for="12">{{'Email' | translate}}</label>
+                        <input class="mb-2 mr-2" type="text" pInputText [disabled]="true" placeholder="{{'Email' | translate}}" autofocus  id="12" [(ngModel)]="item.email">
+                    </div>
+                    <div class="field col-12 md:col-3">
+                        <label for="13">{{'Rib' | translate}}</label>
+                        <input class="mb-2 mr-2" type="text" pInputText [disabled]="true" placeholder="{{'Rib' | translate}}" autofocus  id="13" [(ngModel)]="item.rib">
+                    </div>
+                    <div class="field col-12 md:col-3">
+                        <label for="14">{{'Age' | translate}}</label>
+                        <p-inputNumber class="mb-2 mr-2" id="14" [disabled]="true" placeholder="{{'Age' | translate}}" [(ngModel)]="item.age"></p-inputNumber>
+                    </div>
+                    <div class="field col-12 md:col-3">
+                        <label for="15">{{'Numero telephone' | translate}}</label>
+                        <input class="mb-2 mr-2" type="text" pInputText [disabled]="true" placeholder="{{'Numero telephone' | translate}}" autofocus  id="15" [(ngModel)]="item.numeroTelephone">
+                    </div>
+                    <div class="field col-12 md:col-3">
+                        <label for="16">{{'Emergency contact' | translate}}</label>
+                        <input class="mb-2 mr-2" type="text" pInputText [disabled]="true" placeholder="{{'Emergency contact' | translate}}" autofocus  id="16" [(ngModel)]="item.emergencyContact">
+                    </div>
+                    <div class="field col-12 md:col-3">
+                        <label for="17">{{'Numero securite sociale' | translate}}</label>
+                        <input class="mb-2 mr-2" type="text" pInputText [disabled]="true" placeholder="{{'Numero securite sociale' | translate}}" autofocus  id="17" [(ngModel)]="item.numeroSecuriteSociale">
+                    </div>
+                    <div class="field col-12 md:col-3">
+                        <label for="18">{{'Departement' | translate}}</label>
+                        <p-dropdown [options]="departements" [(ngModel)]="item.departement" id="18" [disabled]="true" optionLabel="id" placeholder="{{'Departement' | translate}}"></p-dropdown>
+                    </div>
+                    <div class="field col-12 md:col-3">
+                        <label for="19">{{'Categorie employe' | translate}}</label>
+                        <p-dropdown [options]="categorieEmployes" [(ngModel)]="item.categorieEmploye" id="19" [disabled]="true" optionLabel="libelle" placeholder="{{'Categorie employe' | translate}}"></p-dropdown>
+                    </div>
+                    <div class="field col-12 md:col-3">
+                        <label for="20">{{'Promotion' | translate}}</label>
+                        <p-dropdown [options]="promotions" [(ngModel)]="item.promotion" id="20" [disabled]="true" optionLabel="libelle" placeholder="{{'Promotion' | translate}}"></p-dropdown>
+                    </div>
+                    <div class="field col-12 md:col-3">
+                        <label for="21">{{'Warnning notice' | translate}}</label>
+                        <input class="mb-2 mr-2" type="text" pInputText [disabled]="true" placeholder="{{'Warnning notice' | translate}}" autofocus  id="21" [(ngModel)]="item.warnningNotice">
+                    </div>
+                    <div class="field col-12 md:col-3">
+                        <label for="22">{{'Cost' | translate}}</label>
+                        <p-inputNumber class="mb-2 mr-2" id="22" [disabled]="true" placeholder="{{'Cost' | translate}}" [(ngModel)]="item.cost"></p-inputNumber>
+                    </div>
+                    <div class="field col-12 md:col-3">
+                        <label for="23">{{'Assurance cost' | translate}}</label>
+                        <p-inputNumber class="mb-2 mr-2" id="23" [disabled]="true" placeholder="{{'Assurance cost' | translate}}" [(ngModel)]="item.assuranceCost"></p-inputNumber>
+                    </div>
+                    <div class="field col-12 md:col-3">
+                        <label for="24">{{'Education' | translate}}</label>
+                        <p-dropdown [options]="educations" [(ngModel)]="item.education" id="24" [disabled]="true" optionLabel="libelle" placeholder="{{'Education' | translate}}"></p-dropdown>
+                    </div>
+                    <div class="field align-inputswitch col-12  md:col-3">
+                        <div  class="label-inputswitch">
+                            <label for="25">{{'Etude' | translate}}</label>
+                        </div>
+                        <div class="input-switch">
+                            <p-inputSwitch id="25"  [disabled]="true" [(ngModel)]="item.etude"></p-inputSwitch>
+                        </div>
+                    </div>
+                    <div class="field align-inputswitch col-12  md:col-3">
+                        <div  class="label-inputswitch">
+                            <label for="26">{{'Experience' | translate}}</label>
+                        </div>
+                        <div class="input-switch">
+                            <p-inputSwitch id="26"  [disabled]="true" [(ngModel)]="item.experience"></p-inputSwitch>
+                        </div>
+                    </div>
+                    <div class="field col-12 md:col-3">
+                        <label for="27">{{'Salaire' | translate}}</label>
+                        <p-inputNumber class="mb-2 mr-2" id="27" [disabled]="true" placeholder="{{'Salaire' | translate}}" [(ngModel)]="item.salaire"></p-inputNumber>
+                    </div>
+                </div>
+            </p-tabPanel>
+
+        </p-tabView>
+
+    </ng-template>
+
+    <ng-template pTemplate="footer" >
+        <div class="grid-footer">
+            <div>
+                <button pButton pRipple label="Annuler" icon="pi pi-times" class="p-button-outlined" (click)="hideViewDialog()"></button>
+            </div>
+        </div>
+    </ng-template>
+</p-dialog>
+
+
+

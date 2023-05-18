@@ -1,0 +1,56 @@
+
+<p-dialog [(visible)]="viewDialog" [style]="{width: '70vw'}" header="{{'demandeCongeTabPan' | translate}}" [modal]="true" styleClass="p-fluid">
+    <ng-template pTemplate="content">
+        <p-tabView>
+            <p-tabPanel header="{{'demandeCongeTabPan' | translate}}">
+                <div class="grid">
+                    <div class="field col-12 md:col-4">
+                        <label for="1">{{'Ref' | translate}}</label>
+                        <input class="mb-2 mr-2" type="text" pInputText [disabled]="true" placeholder="{{'Ref' | translate}}" autofocus  id="1" [(ngModel)]="item.ref">
+                    </div>
+                    <div class="field col-12 md:col-4">
+                        <label for="2">{{'Start time' | translate}}</label>
+                        <p-calendar id="2" [disabled]="true"  [showTime]="true" [showSeconds]="false" placeholder="{{'Start time' | translate}}"  [(ngModel)]="item.startTime" dateFormat="{{dateFormat}}"></p-calendar>
+                    </div>
+                    <div class="field col-12 md:col-4">
+                        <label for="3">{{'End time' | translate}}</label>
+                        <p-calendar id="3" [disabled]="true"  [showTime]="true" [showSeconds]="false" placeholder="{{'End time' | translate}}"  [(ngModel)]="item.endTime" dateFormat="{{dateFormat}}"></p-calendar>
+                    </div>
+                    <div class="field col-12 md:col-4">
+                        <label for="4">{{'Nbr jour conge' | translate}}</label>
+                        <p-inputNumber class="mb-2 mr-2" id="4" [disabled]="true" placeholder="{{'Nbr jour conge' | translate}}" [(ngModel)]="item.nbrJourConge"></p-inputNumber>
+                    </div>
+                    <div class="field col-12 md:col-4">
+                        <label for="5">{{'Employe' | translate}}</label>
+                        <p-dropdown [options]="employes" [(ngModel)]="item.employe" id="5" [disabled]="true" optionLabel="id" placeholder="{{'Employe' | translate}}"></p-dropdown>
+                    </div>
+                    <div class="field col-12 md:col-4">
+                        <label for="6">{{'Departement' | translate}}</label>
+                        <p-dropdown [options]="departements" [(ngModel)]="item.departement" id="6" [disabled]="true" optionLabel="id" placeholder="{{'Departement' | translate}}"></p-dropdown>
+                    </div>
+                    <div class="field col-12 md:col-4">
+                        <label for="7">{{'Etat demande conge' | translate}}</label>
+                        <p-dropdown [options]="etatDemandeConges" [(ngModel)]="item.etatDemandeConge" id="7" [disabled]="true" optionLabel="libelle" placeholder="{{'Etat demande conge' | translate}}"></p-dropdown>
+                    </div>
+                    <div class="field col-12 md:col-4">
+                        <label for="8">{{'Type demande conge' | translate}}</label>
+                        <p-dropdown [options]="typeDemandeConges" [(ngModel)]="item.typeDemandeConge" id="8" [disabled]="true" optionLabel="libelle" placeholder="{{'Type demande conge' | translate}}"></p-dropdown>
+                    </div>
+                </div>
+            </p-tabPanel>
+
+        </p-tabView>
+
+    </ng-template>
+
+    <ng-template pTemplate="footer" >
+        <div class="grid-footer">
+            <div>
+                <button pButton pRipple label="Annuler" icon="pi pi-times" class="p-button-outlined" (click)="hideViewDialog()"></button>
+            </div>
+        </div>
+    </ng-template>
+</p-dialog>
+
+
+

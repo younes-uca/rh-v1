@@ -1,0 +1,76 @@
+
+<p-dialog [(visible)]="viewDialog" [style]="{width: '70vw'}" header="{{'assuranceTabPan' | translate}}" [modal]="true" styleClass="p-fluid">
+    <ng-template pTemplate="content">
+        <p-tabView>
+            <p-tabPanel header="{{'assuranceTabPan' | translate}}">
+                <div class="grid">
+                    <div class="field col-12 md:col-3">
+                        <label for="1">{{'Societe' | translate}}</label>
+                        <p-dropdown [options]="societes" [(ngModel)]="item.societe" id="1" [disabled]="true" optionLabel="libelle" placeholder="{{'Societe' | translate}}"></p-dropdown>
+                    </div>
+                    <div class="field col-12 md:col-3">
+                        <label for="2">{{'Compagnie assurance' | translate}}</label>
+                        <p-dropdown [options]="compagnieAssurances" [(ngModel)]="item.compagnieAssurance" id="2" [disabled]="true" optionLabel="libelle" placeholder="{{'Compagnie assurance' | translate}}"></p-dropdown>
+                    </div>
+                    <div class="field col-12 md:col-3">
+                        <label for="3">{{'Numero police' | translate}}</label>
+                        <input class="mb-2 mr-2" type="text" pInputText [disabled]="true" placeholder="{{'Numero police' | translate}}" autofocus  id="3" [(ngModel)]="item.numeroPolice">
+                    </div>
+                    <div class="field col-12 md:col-3">
+                        <label for="4">{{'Courtier' | translate}}</label>
+                        <input class="mb-2 mr-2" type="text" pInputText [disabled]="true" placeholder="{{'Courtier' | translate}}" autofocus  id="4" [(ngModel)]="item.courtier">
+                    </div>
+                    <div class="field col-12 md:col-3">
+                        <label for="5">{{'Employe' | translate}}</label>
+                        <p-dropdown [options]="employes" [(ngModel)]="item.employe" id="5" [disabled]="true" optionLabel="id" placeholder="{{'Employe' | translate}}"></p-dropdown>
+                    </div>
+                    <div class="field col-12 md:col-3">
+                        <label for="6">{{'Malade' | translate}}</label>
+                        <input class="mb-2 mr-2" type="text" pInputText [disabled]="true" placeholder="{{'Malade' | translate}}" autofocus  id="6" [(ngModel)]="item.malade">
+                    </div>
+                    <div class="field col-12 md:col-3">
+                        <label for="7">{{'Lien parente' | translate}}</label>
+                        <p-dropdown [options]="lienParentes" [(ngModel)]="item.lienParente" id="7" [disabled]="true" optionLabel="libelle" placeholder="{{'Lien parente' | translate}}"></p-dropdown>
+                    </div>
+                    <div class="field col-12 md:col-3">
+                        <label for="8">{{'Date consultation' | translate}}</label>
+                        <p-calendar id="8" [disabled]="true"  [showTime]="true" [showSeconds]="false" placeholder="{{'Date consultation' | translate}}"  [(ngModel)]="item.dateConsultation" dateFormat="{{dateFormat}}"></p-calendar>
+                    </div>
+                    <div class="field col-12 md:col-3">
+                        <label for="9">{{'Date transmission' | translate}}</label>
+                        <p-calendar id="9" [disabled]="true"  [showTime]="true" [showSeconds]="false" placeholder="{{'Date transmission' | translate}}"  [(ngModel)]="item.dateTransmission" dateFormat="{{dateFormat}}"></p-calendar>
+                    </div>
+                    <div class="field col-12 md:col-3">
+                        <label for="10">{{'Nature besoin' | translate}}</label>
+                        <input class="mb-2 mr-2" type="text" pInputText [disabled]="true" placeholder="{{'Nature besoin' | translate}}" autofocus  id="10" [(ngModel)]="item.natureBesoin">
+                    </div>
+                    <div class="field col-12 md:col-3">
+                        <label for="11">{{'Frais enagage' | translate}}</label>
+                        <p-inputNumber class="mb-2 mr-2" id="11" [disabled]="true" placeholder="{{'Frais enagage' | translate}}" [(ngModel)]="item.fraisEnagage"></p-inputNumber>
+                    </div>
+                    <div class="field col-12 md:col-3">
+                        <label for="12">{{'Date envoi' | translate}}</label>
+                        <p-calendar id="12" [disabled]="true"  [showTime]="true" [showSeconds]="false" placeholder="{{'Date envoi' | translate}}"  [(ngModel)]="item.dateEnvoi" dateFormat="{{dateFormat}}"></p-calendar>
+                    </div>
+                    <div class="field col-12 md:col-3">
+                        <label for="13">{{'Observation' | translate}}</label>
+                        <textarea id="13" pInputTextarea rows="5" cols="30" [disabled]="true" placeholder="{{'Observation' | translate}}"  [(ngModel)]="item.observation"></textarea>
+                    </div>
+                </div>
+            </p-tabPanel>
+
+        </p-tabView>
+
+    </ng-template>
+
+    <ng-template pTemplate="footer" >
+        <div class="grid-footer">
+            <div>
+                <button pButton pRipple label="Annuler" icon="pi pi-times" class="p-button-outlined" (click)="hideViewDialog()"></button>
+            </div>
+        </div>
+    </ng-template>
+</p-dialog>
+
+
+

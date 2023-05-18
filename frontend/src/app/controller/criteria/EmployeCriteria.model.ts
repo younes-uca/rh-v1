@@ -1,0 +1,70 @@
+import {CategorieEmployeCriteria} from './CategorieEmployeCriteria.model';
+import {DepartementCriteria} from './DepartementCriteria.model';
+import {SexeCriteria} from './SexeCriteria.model';
+import {EducationCriteria} from './EducationCriteria.model';
+import {PromotionCriteria} from './PromotionCriteria.model';
+import {BaseCriteria} from 'src/app/zynerator/criteria/BaseCriteria.model';
+
+
+export class EmployeCriteria  extends   BaseCriteria  {
+
+    public id: number;
+    public identifiantJlinx: string;
+    public identifiantJlinxLike: string;
+    public matricule: string;
+    public matriculeLike: string;
+    public prenom: string;
+    public prenomLike: string;
+    public nom: string;
+    public nomLike: string;
+    public situation: string;
+    public situationLike: string;
+    public dateNaissance: Date;
+    public dateNaissanceFrom: Date;
+    public dateNaissanceTo: Date;
+    public adresse: string;
+    public adresseLike: string;
+    public ville: string;
+    public villeLike: string;
+    public cin: string;
+    public cinLike: string;
+    public numeroAdhesion: string;
+    public numeroAdhesionLike: string;
+    public email: string;
+    public emailLike: string;
+    public rib: string;
+    public ribLike: string;
+     public age: number;
+     public ageMin: number;
+     public ageMax: number;
+    public numeroTelephone: string;
+    public numeroTelephoneLike: string;
+    public emergencyContact: string;
+    public emergencyContactLike: string;
+    public numeroSecuriteSociale: string;
+    public numeroSecuriteSocialeLike: string;
+    public warnningNotice: string;
+    public warnningNoticeLike: string;
+     public cost: number;
+     public costMin: number;
+     public costMax: number;
+     public assuranceCost: number;
+     public assuranceCostMin: number;
+     public assuranceCostMax: number;
+    public etude: null | boolean;
+    public experience: null | boolean;
+     public salaire: number;
+     public salaireMin: number;
+     public salaireMax: number;
+  public sexe: SexeCriteria ;
+  public sexes: Array<SexeCriteria> ;
+  public departement: DepartementCriteria ;
+  public departements: Array<DepartementCriteria> ;
+  public categorieEmploye: CategorieEmployeCriteria ;
+  public categorieEmployes: Array<CategorieEmployeCriteria> ;
+  public promotion: PromotionCriteria ;
+  public promotions: Array<PromotionCriteria> ;
+  public education: EducationCriteria ;
+  public educations: Array<EducationCriteria> ;
+
+}

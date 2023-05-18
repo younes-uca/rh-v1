@@ -1,0 +1,63 @@
+        <p-dialog [(visible)]="createDialog" [style]="{width: '70vw'}" header="{{'departementTabPan' | translate}}" [modal]="true" styleClass="p-fluid" [maximizable]="true" [draggable]="false" [resizable]="false">
+            <ng-template pTemplate="content" >
+                        <p-tabView>
+                            <p-tabPanel header="{{'{{'departementTabPan' | translate}}' | translate}}">
+                                <div class="grid">
+
+                                            <div class="field col-11 md:col-5">
+                                                <label for="1">{{'departementSiege' | translate}}</label>
+                                                <p-dropdown  appendTo="body"  [options]="sieges" [(ngModel)]="item.siege" id="1" [filter]="true" filterMatchMode="contains"
+                                                        [showClear]="true" optionLabel="libelle" placeholder="{{'departementSiege' | translate}}"  >
+                                                </p-dropdown>
+                                                
+                                            </div>
+                                                <div class="field col-12 md:col-6">
+                                                    <label for="2">{{'departementNbrEmploye' | translate}}</label>
+                                                    <p-inputNumber class="mb-2 mr-2" id="2" placeholder="{{'departementNbrEmploye' | translate}}" [(ngModel)]="item.nbrEmploye"  >
+                                                    </p-inputNumber>
+                                                    
+                                                </div>
+
+                                                <div class="field col-12 md:col-6">
+                                                    <label for="3">{{'departementMoyenneAge' | translate}}</label>
+                                                    <p-inputNumber class="mb-2 mr-2" id="3" placeholder="{{'departementMoyenneAge' | translate}}" [(ngModel)]="item.moyenneAge"  >
+                                                    </p-inputNumber>
+                                                    
+                                                </div>
+
+                                            <div class="field col-11 md:col-5">
+                                                <label for="4">{{'departementEmploye' | translate}}</label>
+                                                <p-dropdown  appendTo="body"  [options]="employes" [(ngModel)]="item.employe" id="4" [filter]="true" filterMatchMode="contains"
+                                                        [showClear]="true" optionLabel="id" placeholder="{{'departementEmploye' | translate}}"  >
+                                                </p-dropdown>
+                                                
+                                            </div>
+                                            <div class="field col-11 md:col-5">
+                                                <label for="5">{{'departementStation' | translate}}</label>
+                                                <p-dropdown  appendTo="body"  [options]="stations" [(ngModel)]="item.station" id="5" [filter]="true" filterMatchMode="contains"
+                                                        [showClear]="true" optionLabel="id" placeholder="{{'departementStation' | translate}}"  >
+                                                </p-dropdown>
+                                                
+                                            </div>
+                                </div>
+                            </p-tabPanel>
+
+                        </p-tabView>
+
+            </ng-template>
+
+            <ng-template pTemplate="footer" >
+                <div class="grid-step">
+                        <div style="margin-left: auto;">
+                            <button pButton pRipple  label="{{'validate' | translate}}"  icon="pi pi-check" style="margin:10px" (click)="save()"></button>
+                        </div>
+                        <div>
+                            <button pButton pRipple  label="{{'cancel' | translate}}" icon="pi pi-times" class="p-button-outlined" (click)="hideCreateDialog()"></button>
+                        </div>
+
+                </div>
+            </ng-template>
+
+
+
+    </p-dialog>
